@@ -1,0 +1,61 @@
+{% extends "layout.html"%}
+{% block title %}
+Hand Sign Digit Recognition
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+
+    <header class="text-white text-center">
+        <h1 class="display-4">Hand Sign Digit Language Detection</h1>
+        <p class="lead mb-5">A webapp to detect a digit using hand sign language. Just drop an image of Hand Digit Sign
+            and see the magic.</p>
+    </header>
+
+
+    <div class="row py-4">
+        <div class="col-lg-6 mx-auto">
+
+            <!-- Upload image input-->
+            <form action="{{ url_for('predict_image_file') }}" enctype="multipart/form-data" method="POST">
+                <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+                    <input class="form-control border-0" id="upload" name="file" type="file">
+                    <label class="font-weight-light text-muted" for="upload" id="upload-label">Choose file</label>
+                    <div class="input-group-append">
+                        <label class="btn btn-light m-0 rounded-pill px-4" for="upload"> <i
+                                class="fa fa-cloud-upload mr-2 text-muted"></i><small
+                                class="text-uppercase font-weight-bold text-muted">Choose file</small></label>
+                    </div>
+                </div>
+
+
+                <!-- Uploaded image area-->
+                <p class="font-italic text-white text-center">The image uploaded will be rendered inside the box
+                    below.</p>
+                <div class="image-area mt-4"><img alt="" class="img-fluid rounded shadow-sm mx-auto d-block"
+                                                  id="imageResult" name="imageResult"
+                                                  src="#"></div>
+
+                <!-- Submit button-->
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center">
+                            <input class="btn btn-primary my-3" type="submit"/>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row py-4">
+        <div class="col-lg-6 mx-auto" style="background-color: white;">
+            <img src="https://quickchart.io/chart?width=250&height=220&c=%7B%0A%20%20type%3A%20%27line%27%2C%0A%20%20data%3A%20%7B%0A%20%20%20%20labels%3A%20%5B%27Epoch%201%27%2C%20%27Epoch%202%27%2C%20%27Epoch%203%27%2C%20%27Epoch%204%27%2C%20%27Epoch%205%27%2C%20%27Epoch%206%27%5D%2C%0A%20%20%20%20datasets%3A%20%5B%0A%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20label%3A%20%27Data%27%2C%0A%20%20%20%20%20%20%20%20steppedLine%3A%20true%2C%0A%20%20%20%20%20%20%20%20data%3A%20%5B72%2C%2093%2C%2071%2C%2035%2C%2022%2C%2013%5D%2C%0A%20%20%20%20%20%20%20%20borderColor%3A%20%27rgb(255%2C%2099%2C%20132)%27%2C%0A%20%20%20%20%20%20%20%20fill%3A%20false%2C%0A%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%5D%2C%0A%20%20%7D%2C%0A%20%20options%3A%20%7B%0A%20%20%20%20responsive%3A%20true%2C%0A%20%20%20%20title%3A%20%7B%0A%20%20%20%20%20%20display%3A%20true%2C%0A%20%20%20%20%20%20text%3A%20%27Model%20Size%20(KB)%20Vs%20Epochs%27%2C%0A%20%20%20%20%7D%2C%0A%20%20%7D%2C%0A%7D%0A" alt="">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
